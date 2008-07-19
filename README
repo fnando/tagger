@@ -4,7 +4,7 @@ has_tags
 Installing
 ----------
 
-1) Install the plugin with `script/plugin install http://svn.simplesideias.com.br/general/rails/plugins/has_tags`
+1) Install the plugin with `script/plugin install git://github.com/fnando/has_tags.git`
 2) Generate a migration with `script/generate migration add_tagging` and add the following code:
 
 class AddTagging < ActiveRecord::Migration
