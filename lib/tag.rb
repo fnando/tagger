@@ -54,6 +54,8 @@ class Tag < ActiveRecord::Base
   
   private
     def downcase_name
+      write_attribute(:name, name.mb_chars.downcase)
+    rescue
       write_attribute(:name, name.chars.downcase)
     end
 end
