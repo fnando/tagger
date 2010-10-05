@@ -1,0 +1,45 @@
+= Tagger
+
+== Installing
+
+1. Install the plugin with <tt>script/plugin install git://github.com/fnando/has_tags.git</tt>
+2. Generate the migration files with <tt>rails generate tagger:install</tt>.
+3. Finally, run the migrations with <tt>rake db:migrate</tt>.
+
+== Usage
+
+Add the method call <tt>taggable</tt> to your model.
+
+  class Link < ActiveRecord::Base
+    taggable :scope => :category
+    belongs_to :category
+  end
+
+  class Category < ActiveRecord::Base
+    has_many :links
+  end
+
+  @post = Post.first
+  @category = Category.first
+
+  # set tags using the chosen tag separator
+  @post.tagged_with = "rails, activerecord, models"
+
+  # get tags joined with the chosen tag separator
+  @post.tagged_with
+
+  # get all tags as objects
+  @post.tags
+
+  # check if an user tagged this object
+  @post.tag_owner?(current_user)
+
+  # generate a tag cloud
+  @tags = Tag.cloud(:link, :limit => 100, :scope => @category)
+
+  # at the view, call the helper tag_cloud
+  tag_cloud @tags do |tag_name, css|
+    <%= link_to tag_name, tag_path(tag_name), :class => css
+  end
+
+Copyright (c) 2008 Nando Vieira, released under the MIT license
