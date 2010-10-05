@@ -2,7 +2,7 @@
 
 == Installing
 
-1. Install the plugin with <tt>script/plugin install git://github.com/fnando/has_tags.git</tt>
+1. Install it with <tt>gem install tagger</tt>
 2. Generate the migration files with <tt>rails generate tagger:install</tt>.
 3. Finally, run the migrations with <tt>rake db:migrate</tt>.
 
