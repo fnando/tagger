@@ -36,7 +36,7 @@ class Tag < ActiveRecord::Base
     separator = SEPARATORS[separator] || SEPARATORS[:comma]
     tags = []
     tag_list = tag_list.dup
-    tag_list.gsub!(/(["'])(.*?)(\1)/ms) {|m| tags << $2; "" }
+    tag_list.gsub!(/(["'])(.*?)(\1)/m) {|m| tags << $2; "" }
     tags += tag_list.split(separator)
     tags.collect(&:squish).reject(&:blank?).sort_by {|tag| tag.downcase}
   end

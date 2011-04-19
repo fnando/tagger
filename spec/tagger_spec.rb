@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require "spec_helper"
 
 describe Tagger do
@@ -75,6 +76,10 @@ describe Tagger do
 
     it "should recognize multiple words when using space" do
       Tag.parse(%["ruby on rails"  "web development" programming ruby], :space).should == ["programming", "ruby", "ruby on rails", "web development"]
+    end
+
+    it "normalizes accented words" do
+      Tag.parse("popularização", :space).should == %w[popularização]
     end
   end
 
