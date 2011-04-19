@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tagger (0.1.1)
+    tagger (0.1.2)
       rails (~> 3.0.0)
 
 GEM
